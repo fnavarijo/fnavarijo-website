@@ -22,13 +22,18 @@ export default {
       { hid: 'description', name: 'description', content: process.env.npm_package_description || '' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      {
+        rel: 'stylesheet',
+        href: 'https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600;700&display=swap',
+      }
     ]
   },
   /*
   ** Global CSS
   */
   css: [
+    '@/assets/scss/main.scss',
   ],
   /*
   ** Plugins to load before mounting the App
@@ -48,26 +53,23 @@ export default {
     '@nuxt/typescript-build',
     // Doc: https://github.com/nuxt-community/stylelint-module
     '@nuxtjs/stylelint-module',
+    // Doc: https://github.com/nuxt-community/style-resources-module/
+    '@nuxtjs/style-resources',
   ],
   /*
   ** Nuxt.js modules
   */
   modules: [
-    // Doc: https://github.com/nuxt-community/modules/tree/master/packages/bulma
-    '@nuxtjs/bulma',
     '@nuxtjs/pwa',
   ],
   /*
   ** Build configuration
   ** See https://nuxtjs.org/api/configuration-build/
   */
-  build: {
-    postcss: {
-      preset: {
-        features: {
-          customProperties: false
-        }
-      }
-    },
+  build: {},
+  styleResources: {
+    scss: [
+      '@/assets/scss/style-resources.scss',
+    ],
   }
 }
