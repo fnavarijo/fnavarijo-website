@@ -1,9 +1,10 @@
 <template>
   <section class="home-banner">
     <HomeBannerBackground class="home-banner__background"/>
-    <!-- TODO: Change via writting effect between Hola and Hi -->
-    <h1 class="home-banner__title">¡Hola!</h1>
-    <h2 class="home-banner__subtitle">Soy Fernando Navarijo</h2>
+    <h1 class="home-banner__title">
+      <WrittingAnimation :words-list="greetings" />
+    </h1>
+    <h2 class="home-banner__subtitle">I'm Fernando Navarijo</h2>
     <h6 class="home-banner__job-position">Web Developer & Devops Enginer</h6>
   </section>
 </template>
@@ -19,7 +20,11 @@ import HomeBannerBackground from '@/components/home/HomeBannerBackground.vue';
     HomeBannerBackground,
   },
 })
-export default class HomePage extends Vue {}
+export default class HomePage extends Vue {
+  get greetings (): string[] {
+    return ['¡Hola!', 'Hi!'];
+  }
+}
 </script>
 
 <style lang="scss" scoped>
