@@ -1,75 +1,66 @@
 <template>
-  <div class="container">
-    <div>
-      <Logo />
-      <h1 class="title">
-        fnavarijo-website
-      </h1>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--green"
-        >
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--grey"
-        >
-          GitHub
-        </a>
-      </div>
-    </div>
-  </div>
+  <section class="home-banner">
+    <HomeBannerBackground class="home-banner__background"/>
+    <!-- TODO: Change via writting effect between Hola and Hi -->
+    <h1 class="home-banner__title">¡Hola!</h1>
+    <h2 class="home-banner__subtitle">Soy Fernando Navarijo</h2>
+    <h6 class="home-banner__job-position">Web Developer & Devops Enginer</h6>
+  </section>
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
+import Vue from 'vue';
+import Component from 'vue-class-component';
 
-export default Vue.extend({})
+import HomeBannerBackground from '@/components/home/HomeBannerBackground.vue';
+
+@Component({
+  components: {
+    HomeBannerBackground,
+  },
+})
+export default class HomePage extends Vue {}
 </script>
 
-<style>
-.container {
+<style lang="scss" scoped>
+.home-banner {
   margin: 0 auto;
   min-height: 100vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  text-align: center;
-}
+  background-color: #363635;
+  color: #fff;
+  position: relative;
 
-.title {
-  font-family:
-    'Quicksand',
-    'Source Sans Pro',
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    Roboto,
-    'Helvetica Neue',
-    Arial,
-    sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
+  &__title,
+  &__subtitle,
+  &__job-position {
+    z-index: 5;
+  }
 
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
+  &__title,
+  &__subtitle {
+    text-transform: uppercase;
+  }
 
-.links {
-  padding-top: 15px;
+  &__title {
+    font-size: px-to-rem(96);
+    font-weight: bold;
+  }
+
+  &__subtitle {
+    font-size: px-to-rem(64);
+  }
+
+  &__job-position {
+    font-size: $size-3;
+  }
+
+  &__background {
+    position: absolute;
+  }
 }
 </style>
+
