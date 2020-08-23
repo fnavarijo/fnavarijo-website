@@ -1,6 +1,6 @@
 <template>
   <section class="home-banner">
-    <HomeBannerBackground class="home-banner__background"/>
+    <HomeBannerBackground class="home-banner__background is-hidden-touch"/>
     <h1 class="home-banner__title">
       <WrittingAnimation :words-list="greetings" />
     </h1>
@@ -65,6 +65,24 @@ export default class HomePage extends Vue {
 
   &__background {
     position: absolute;
+  }
+}
+
+@include touch {
+  .home-banner {
+    &__title {
+      font-size: px-to-rem(64);
+    }
+  
+    &__subtitle {
+      font-size: px-to-rem(48);
+      text-align: center;
+    }
+
+    &__job-position {
+      font-size: $size-5;
+      text-align: center;
+    }
   }
 }
 </style>

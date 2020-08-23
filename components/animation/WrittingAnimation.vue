@@ -43,6 +43,10 @@ export default class WrittingAnimation extends Vue {
     }, 200);
   }
 
+  beforeDestroy (): void {
+    this.clearInterval();
+  }
+
   clearInterval (): void {
     clearInterval(this.textIntervalId as NodeJS.Timeout);
   }
