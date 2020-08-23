@@ -5,7 +5,7 @@
       <WrittingAnimation :words-list="greetings" />
     </h1>
     <h2 class="home-banner__subtitle">I'm Fernando Navarijo</h2>
-    <h6 class="home-banner__job-position">Web Developer & Devops Enginer</h6>
+    <h6 class="home-banner__job-position">Web Developer & Devops Engineer</h6>
   </section>
 </template>
 
