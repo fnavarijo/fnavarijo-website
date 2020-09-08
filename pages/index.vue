@@ -2,8 +2,15 @@
   <section class="home-banner">
     <HomeBannerBackground class="home-banner__background is-hidden-touch"/>
     <h1 class="home-banner__title">
-      <WrittingAnimation :words-list="greetings" />
-      <span>👋</span>
+      <WritingAnimation
+        :words-list="greetings"
+        @textWrote="saluteUser = true"
+      />
+      <span
+        class="home-banner__emoji-wave"
+        id="emoji-wave"
+        :class="{ 'home-banner__emoji-wave--salute': saluteUser  }"
+      >👋</span>
     </h1>
     <h2 class="home-banner__subtitle">
       I'm Fernando Navarijo
@@ -24,8 +31,27 @@ import HomeBannerBackground from '@/components/home/HomeBannerBackground.vue';
   },
 })
 export default class HomePage extends Vue {
+  saluteUser: boolean = false;
+  
   get greetings (): string[] {
     return ['¡Hola!', 'Hi!'];
+  }
+
+  mounted (): void {
+    const waveEmoji = document.getElementById('emoji-wave');
+    waveEmoji!.addEventListener('animationend', this.stopSaluting, false);
+  }
+
+  beforeDestroy (): void {
+    const waveEmoji = document.getElementById('emoji-wave');
+    waveEmoji!.removeEventListener('animationend', this.stopSaluting, false);
+  }
+
+  stopSaluting (event: AnimationEvent): void {
+    const { animationName } = event;
+    if (animationName.includes('salute')) {
+      this.saluteUser = false;
+    }
   }
 }
 </script>
@@ -69,6 +95,14 @@ export default class HomePage extends Vue {
   &__background {
     position: absolute;
   }
+
+  &__emoji-wave {
+    display: inline-block;
+
+    &--salute {
+      animation: salute 1s linear .3s;
+    }
+  }
 }
 
 @include touch {
@@ -86,6 +120,20 @@ export default class HomePage extends Vue {
       font-size: $size-5;
       text-align: center;
     }
+  }
+}
+
+@keyframes salute {
+  35%, 55% {
+    transform: rotate(-5deg);
+  }
+
+  40%, 50%, 60%, 70% {
+    transform: rotate(0);
+  }
+
+  45%, 65% {
+    transform: rotate(5deg);
   }
 }
 </style>

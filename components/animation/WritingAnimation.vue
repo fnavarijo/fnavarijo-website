@@ -5,7 +5,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'nuxt-property-decorator';
+import { Component, Prop, Vue, Emit } from 'nuxt-property-decorator';
 
 @Component
 export default class WrittingAnimation extends Vue {
@@ -20,7 +20,6 @@ export default class WrittingAnimation extends Vue {
   textIntervalId: NodeJS.Timeout | null = null;
   pauseIntervalId: NodeJS.Timeout | null = null;
   displayedText = '';
-
 
   mounted (): void {
     this.setWritingTextInterval();
@@ -44,6 +43,7 @@ export default class WrittingAnimation extends Vue {
       this.isEnteringText = false;
       this.clearInterval(this.textIntervalId!);
       this.setTextPause();
+      this.textWrote();
     } else if (!this.isEnteringText && this.displayedText.length === 0) {
       this.isEnteringText = true;
       this.currentWordIndex = (this.currentWordIndex + 1) % this.wordsList.length;
@@ -54,7 +54,7 @@ export default class WrittingAnimation extends Vue {
     this.pauseIntervalId = setInterval(() => {
       this.clearInterval(this.pauseIntervalId!);
       this.setWritingTextInterval();
-    }, 2000);
+    }, 1400);
   }
 
   beforeDestroy (): void {
@@ -71,6 +71,9 @@ export default class WrittingAnimation extends Vue {
   removeLastChar (word: string): string {
     return word.slice(0, -1);
   }
+
+  @Emit('textWrote')
+  textWrote () {}
 }
 </script>
 
