@@ -18,35 +18,54 @@ export default class WrittingAnimation extends Vue {
   currentWordIndex: number = 0;
   isEnteringText: boolean = true;
   textIntervalId: NodeJS.Timeout | null = null;
+  pauseIntervalId: NodeJS.Timeout | null = null;
   displayedText = '';
 
-  // TODO: improve clean coding
+
   mounted (): void {
-    this.textIntervalId = setInterval(() => {
-      const currentWord = this.wordsList[this.currentWordIndex];
-      const { length } = currentWord;
-      
-      if (this.isEnteringText) {
-        this.displayedText += currentWord.charAt(this.displayedText.length);
-      } else {
-        this.displayedText = this.removeLastChar(this.displayedText);
-      }
-      
-      if (this.displayedText.length === length) {
-        this.isEnteringText = false;
-      } else if (!this.isEnteringText && this.displayedText.length === 0) {
-        this.isEnteringText = true;
-        this.currentWordIndex = (this.currentWordIndex + 1) % this.wordsList.length;
-      }
-    }, 250);
+    this.setWritingTextInterval();
+  }
+
+  setWritingTextInterval (): void {
+    this.textIntervalId = setInterval(this.handleTextDisplay, 250);
+  }
+
+  handleTextDisplay (): void {
+    const currentWord = this.wordsList[this.currentWordIndex];
+    const { length } = currentWord;
+    
+    if (this.isEnteringText) {
+      this.displayedText += currentWord.charAt(this.displayedText.length);
+    } else {
+      this.displayedText = this.removeLastChar(this.displayedText);
+    }
+    
+    if (this.displayedText.length === length) {
+      this.isEnteringText = false;
+      this.clearInterval(this.textIntervalId!);
+      this.setTextPause();
+    } else if (!this.isEnteringText && this.displayedText.length === 0) {
+      this.isEnteringText = true;
+      this.currentWordIndex = (this.currentWordIndex + 1) % this.wordsList.length;
+    }
+  }
+
+  setTextPause (): void {
+    this.pauseIntervalId = setInterval(() => {
+      this.clearInterval(this.pauseIntervalId!);
+      this.setWritingTextInterval();
+    }, 2000);
   }
 
   beforeDestroy (): void {
-    this.clearInterval();
+    const { textIntervalId, pauseIntervalId } = this;
+    textIntervalId
+      ? this.clearInterval(this.textIntervalId!)
+      : this.clearInterval(this.pauseIntervalId!);
   }
 
-  clearInterval (): void {
-    clearInterval(this.textIntervalId as NodeJS.Timeout);
+  clearInterval (intervalId: NodeJS.Timeout): void {
+    clearInterval(intervalId);
   }
 
   removeLastChar (word: string): string {

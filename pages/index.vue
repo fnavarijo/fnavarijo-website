@@ -3,6 +3,7 @@
     <HomeBannerBackground class="home-banner__background is-hidden-touch"/>
     <h1 class="home-banner__title">
       <WrittingAnimation :words-list="greetings" />
+      <span>👋</span>
     </h1>
     <h2 class="home-banner__subtitle">
       I'm Fernando Navarijo
