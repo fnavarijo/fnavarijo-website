@@ -40,7 +40,7 @@ export default class WrittingAnimation extends Vue {
         this.isEnteringText = true;
         this.currentWordIndex = (this.currentWordIndex + 1) % this.wordsList.length;
       }
-    }, 200);
+    }, 250);
   }
 
   beforeDestroy (): void {
