@@ -4,14 +4,16 @@
     <h1 class="home-banner__title">
       <WrittingAnimation :words-list="greetings" />
     </h1>
-    <h2 class="home-banner__subtitle">I'm Fernando Navarijo</h2>
+    <h2 class="home-banner__subtitle">
+      I'm Fernando Navarijo
+    </h2>
     <h6 class="home-banner__job-position">Web Developer & Devops Engineer</h6>
   </section>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
-import Component from 'vue-class-component';
+import { Component } from 'nuxt-property-decorator';
 
 import HomeBannerBackground from '@/components/home/HomeBannerBackground.vue';
 
@@ -35,8 +37,8 @@ export default class HomePage extends Vue {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #363635;
-  color: #fff;
+  background-color: $grey-500;
+  color: $white;
   position: relative;
 
   &__title,
