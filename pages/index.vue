@@ -2,16 +2,26 @@
   <section class="home-banner">
     <HomeBannerBackground class="home-banner__background is-hidden-touch"/>
     <h1 class="home-banner__title">
-      <WrittingAnimation :words-list="greetings" />
+      <WritingAnimation
+        :words-list="greetings"
+        @textWrote="saluteUser = true"
+      />
+      <span
+        class="home-banner__emoji-wave"
+        id="emoji-wave"
+        :class="{ 'home-banner__emoji-wave--salute': saluteUser  }"
+      >👋</span>
     </h1>
-    <h2 class="home-banner__subtitle">I'm Fernando Navarijo</h2>
+    <h2 class="home-banner__subtitle">
+      I'm Fernando Navarijo
+    </h2>
     <h6 class="home-banner__job-position">Web Developer & Devops Engineer</h6>
   </section>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
-import Component from 'vue-class-component';
+import { Component } from 'nuxt-property-decorator';
 
 import HomeBannerBackground from '@/components/home/HomeBannerBackground.vue';
 
@@ -21,8 +31,27 @@ import HomeBannerBackground from '@/components/home/HomeBannerBackground.vue';
   },
 })
 export default class HomePage extends Vue {
+  saluteUser: boolean = false;
+  
   get greetings (): string[] {
     return ['¡Hola!', 'Hi!'];
+  }
+
+  mounted (): void {
+    const waveEmoji = document.getElementById('emoji-wave');
+    waveEmoji!.addEventListener('animationend', this.stopSaluting, false);
+  }
+
+  beforeDestroy (): void {
+    const waveEmoji = document.getElementById('emoji-wave');
+    waveEmoji!.removeEventListener('animationend', this.stopSaluting, false);
+  }
+
+  stopSaluting (event: AnimationEvent): void {
+    const { animationName } = event;
+    if (animationName.includes('salute')) {
+      this.saluteUser = false;
+    }
   }
 }
 </script>
@@ -35,8 +64,8 @@ export default class HomePage extends Vue {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #363635;
-  color: #fff;
+  background-color: $grey-500;
+  color: $white;
   position: relative;
 
   &__title,
@@ -66,6 +95,14 @@ export default class HomePage extends Vue {
   &__background {
     position: absolute;
   }
+
+  &__emoji-wave {
+    display: inline-block;
+
+    &--salute {
+      animation: salute 1s linear .3s;
+    }
+  }
 }
 
 @include touch {
@@ -83,6 +120,20 @@ export default class HomePage extends Vue {
       font-size: $size-5;
       text-align: center;
     }
+  }
+}
+
+@keyframes salute {
+  35%, 55% {
+    transform: rotate(-5deg);
+  }
+
+  40%, 50%, 60%, 70% {
+    transform: rotate(0);
+  }
+
+  45%, 65% {
+    transform: rotate(5deg);
   }
 }
 </style>
