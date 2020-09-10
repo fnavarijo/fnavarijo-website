@@ -6,7 +6,7 @@
     <section class="content cheatsheet__content">
       <header>
         <h1 class="title is-1 cheatsheet__title">
-          Semantic CheatSheets
+          Semantic CheatSheet
         </h1>
       </header>
       <NuxtContent :document="page" />

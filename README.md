@@ -18,3 +18,6 @@ $ npm run generate
 ```
 
 For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
+
+## Colors reference
+https://material.io/resources/color/#!/?view.left=0&view.right=0&primary.color=363635&secondary.color=2a628f&primary.text.color=ffffff
