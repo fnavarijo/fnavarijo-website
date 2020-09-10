@@ -75,5 +75,10 @@ export default {
     ],
   },
   content: {
+    markdown: {
+      prism: {
+        theme: false,
+      },
+    },
   }
 }
