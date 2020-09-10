@@ -64,7 +64,7 @@ export default class HomePage extends Vue {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: $grey-500;
+  background-color: $grey-800;
   color: $white;
   position: relative;
 

@@ -1,10 +1,17 @@
 <template>
-  <section class="cheatsheet">
-    <header>
-      <h1 class="title is-1 cheatsheet__title">Semantic CheatSheets</h1>
-    </header>
-    <NuxtContent :document="page" />
-  </section>
+  <div class="cheatsheet">
+    <aside class="cheatsheet__navigation">
+      <h3 class="title">Semantic HTML</h3>
+    </aside>
+    <section class="content cheatsheet__content">
+      <header>
+        <h1 class="title is-1 cheatsheet__title">
+          Semantic CheatSheets
+        </h1>
+      </header>
+      <NuxtContent :document="page" />
+    </section>
+  </div>
 </template>
 
 <script lang="ts">
@@ -31,12 +38,23 @@ export default class CheatSheets extends Vue {
 
 <style lang="scss" scoped>
 .cheatsheet {
-  color: $white;
   min-height: 100vh;
-  background-color: $grey-500;
+  background-color: $white;
+  display: grid;
+  grid-template-columns: px-to-rem(300) 1fr;
 
-  &__title {
-    color: inherit;
+  &__navigation {
+    padding: px-to-rem(25);
+    border-right: 1px solid $white;
+    background-color: $primary;
+  }
+
+  &__content {
+    padding: px-to-rem(50);
+
+    /deep/ h2 {
+      border-bottom: px-to-rem(4) solid $blue-900;
+    }
   }
 }
 </style>
