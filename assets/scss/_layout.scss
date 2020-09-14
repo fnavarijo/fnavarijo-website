@@ -15,3 +15,22 @@ body {
   box-sizing: border-box;
   margin: 0;
 }
+
+/* Scrollbar
+ * ======================================== */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #e5e5e4;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #363635;
+  border-radius: 15px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
