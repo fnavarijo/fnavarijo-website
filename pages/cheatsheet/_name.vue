@@ -1,16 +1,27 @@
 <template>
   <div class="cheatsheet">
     <aside class="cheatsheet__navigation">
-      <h3 class="title">Semantic HTML</h3>
+      <div class="cheatsheet__navigation-menu navigation">
+        <h3 class="title navigation__title">Semantic HTML</h3>
+        <ul class="navigation__list">
+          <li
+            v-for="(section, index) in pageTitles"
+            :key="index"
+            class="navigation__list-item"
+          >
+            <a
+              :href="`#${section.id}`"
+              class="has-text-white"
+            >
+              {{ section.text }}
+            </a>
+          </li>
+        </ul>
+      </div>
     </aside>
-    <section class="content cheatsheet__content">
-      <header>
-        <h1 class="title is-1 cheatsheet__title">
-          Semantic CheatSheet
-        </h1>
-      </header>
+    <article class="content cheatsheet__content">
       <NuxtContent :document="page" />
-    </section>
+    </article>
   </div>
 </template>
 
@@ -33,6 +44,11 @@ export default class CheatSheets extends Vue {
       page
     };
   }
+
+  // TODO: update typing
+  get pageTitles (): Array<Object> {
+    return this.page!.toc as Array<Object>;
+  }
 }
 </script>
 
@@ -41,19 +57,51 @@ export default class CheatSheets extends Vue {
   min-height: 100vh;
   background-color: $white;
   display: grid;
-  grid-template-columns: px-to-rem(300) 1fr;
+  grid-template-columns: px-to-rem(250) 1fr;
 
   &__navigation {
-    padding: px-to-rem(25);
+    // padding: px-to-rem(25);
     border-right: 1px solid $white;
     background-color: $primary;
+
+    // TODO: check if fixed is the solution?
+    // &-menu {}
   }
 
   &__content {
     padding: px-to-rem(50);
+    grid-column: 2;
 
     /deep/ h2 {
       border-bottom: px-to-rem(4) solid $blue-900;
+    }
+
+    /deep/ h3 {
+      a::before {
+        content: '#';
+      }
+    }
+  }
+
+  .navigation {
+    &__title {
+      border-bottom: 1px solid $white;
+      padding: px-to-rem(10) px-to-rem(25);
+    }
+
+    &__list {
+      &-item {
+        padding: px-to-rem(10);
+
+        /deep/ a {
+          color: $primary;
+        }
+
+        &:hover {
+          background-color: $grey-500;
+          // border-radius: px-to-rem(5);
+        }
+      }
     }
   }
 }

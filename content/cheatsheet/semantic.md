@@ -21,14 +21,40 @@ When coding HTML documents, we look to wrap our content with elements that make 
 * SEO: When the crawlers search for pages that match certain search criteria, they try to find the elements wrapped by this semantic elements, and decides if it's related to what the users is looking for.
 * Coding: As a developer, you don't what to see a structure made by good looking divs. The semantic markup helps to express the meaning of your document.
 
-# Elements
+## Semantic sectioning elements
 ### `<main>`
-This tag represents the main content area of your document. It must exist only one.
+This element represents the main content area of the document.
+Here can be put the main functionality of the app, or content that is directly related to main purpose of the document.
 ``` markup
   <main>
     <h1>Starring tonight! The following content</h1>
     ...
   </main>
+
+  <!-- Example with a Nuxt layout -->
+  <main>
+    <Nuxt />
+  </main>
+```
+
+### `<h1/> - <h6/>`
+
+### `<article>`
+This element represents a self-contained composition in a document. Or, as I like to see it, if we take out the content of this element from the flow of the document, it doesn't loose meaning. Some examples of this element are:
+* blog entries
+* media post
+* essays.
+
+This elements should be identified by a heading tag. (`<h1/> - <h2/>`).
+
+##### Examples
+``` markup
+<article>
+  <header>
+    <h1>How to unlock your superbranin</h1>
+  </header>
+  <p>As Jim Kwik says ...</p>
+</article>
 ```
 
 ### `<section>`
