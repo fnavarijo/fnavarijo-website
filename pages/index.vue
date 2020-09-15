@@ -133,7 +133,6 @@ export default class HomePage extends Vue {
       display: inline-block;
       width: px-to-rem(30);
       height: px-to-rem(30);
-      filter: invert(#fff);
     }
   }
 }
