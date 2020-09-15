@@ -38,6 +38,17 @@ Here can be put the main functionality of the app, or content that is directly r
 ```
 
 ### `<h1/> - <h6/>`
+This element represents the headings for the sections.
+The number represents a rank, beign the `<h1>` the highest and `h6` the lowest.
+* Use the rank to create the document outline.
+*Note*: Don't use h1-h6 to markup subheading, subtitles, alternative titles unless intended to be the heading of a subsection, or new section.
+* Don't want to use subtitle in the table of content.
+* Doesn't start a new section
+
+``` markup
+<h1>Title</h1>
+<p>Subtitle</p>
+```
 
 ### `<article>`
 This element represents a self-contained composition in a document. Or, as I like to see it, if we take out the content of this element from the flow of the document, it doesn't loose meaning. Some examples of this element are:
@@ -79,8 +90,51 @@ This element represents a generic section of a document or application. We can s
 ```
 
 ### `<header>`
+This element represent a introductory content.
+When header is direct child of sectioning root element `<body>`, is scoped to the `<body>` element, meaning the introductory content is for the whole page.
+* Can contain heading elements but it's not required.
+* Can wrap section's table of content, search form or relevant logos.
+
+``` markup
+<body>
+  <header>
+    <h1>Scoped for the document</h1>
+  </header>
+  <article>
+    <h2>Some cool article</h1>
+    <p>...</p>
+  </article>
+</body>
+```
+
+``` markup
+...
+<article>
+  <header>
+    <h2>How to be more productive</h2>
+    <p>The definitive guide</p>
+  </header>
+  <p>This guide is for be the ultimate productive weapon.</p>
+</article>
+```
 
 ### `<aside>`
+This elements represents content that is indirectly related to the main content of the parenting sectioning content. Some examples of this type of content are:
+* Quotes
+* Sidebars
+* Advertising
+
+``` markup
+<article>
+  <h2>The article title</h2>
+  <p>The article content</p>
+  <aside>
+    <h2>How I was raised</h2>
+    <p>Raised too</p>
+  </aside>
+</article>
+```
+
 
 ### `<nav>`
 This elements represents a section of a page that links to other pages or parts within the page.
@@ -106,3 +160,9 @@ This elements represents a section of a page that links to other pages or parts 
 ```
 
 ### `<footer>`
+This element represents a footer for the nearest main ancestor, sectioning content or sectioning root. Contains info as author info, links to related content, copyright data.
+If footer is direct child of body and not descendant of main, sectioning content and sectioning root, the footer represents a footer for the whole page.
+* Contact information of author belongs in an `<address>` elements.
+* Can be used in `<article>` to specify publication date.
+
+Thr footer don't neccesarily has to be at the end of the document, thoug they usually do.
