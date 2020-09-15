@@ -61,6 +61,8 @@ export default {
   */
   modules: [
     '@nuxtjs/pwa',
+    // Doc: https://content.nuxtjs.org/
+    '@nuxt/content',
   ],
   /*
   ** Build configuration
@@ -71,5 +73,12 @@ export default {
     scss: [
       '@/assets/scss/style-resources.scss',
     ],
+  },
+  content: {
+    markdown: {
+      prism: {
+        theme: false,
+      },
+    },
   }
 }

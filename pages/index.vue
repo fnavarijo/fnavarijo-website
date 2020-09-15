@@ -15,7 +15,18 @@
     <h2 class="home-banner__subtitle">
       I'm Fernando Navarijo
     </h2>
-    <h6 class="home-banner__job-position">Web Developer & Devops Engineer</h6>
+    <span class="home-banner__job-position">Web Developer & Devops Engineer</span>
+    <footer class="home-banner__footer">
+      <div class="is-flex footer__icons-container">
+        <a href="https://twitter.com/fnavarijo96" target="_blank">
+          <img class="footer__icon" src="~/assets/img/twitter.svg" alt="Link to my twitter account" />
+        </a>
+        <a href="https://www.linkedin.com/in/fnavarijo/" target="_blank">
+          <img class="footer__icon" src="~/assets/img/linkedin.svg" alt="Link to my linkedin account" />
+        </a>
+      </div>
+      <div class="footer__icons-author">Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+    </footer>
   </section>
 </template>
 
@@ -64,7 +75,7 @@ export default class HomePage extends Vue {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: $grey-500;
+  background-color: $grey-800;
   color: $white;
   position: relative;
 
@@ -101,6 +112,28 @@ export default class HomePage extends Vue {
 
     &--salute {
       animation: salute 1s linear .3s;
+    }
+  }
+
+  &__footer {
+    position: absolute;
+    bottom: px-to-rem(20);
+  }
+
+  .footer {
+    &__icons-container {
+      place-content: center space-evenly;
+    }
+
+    &__icons-author {
+      font-size: px-to-rem(10);
+    }
+
+    &__icon {
+      display: inline-block;
+      width: px-to-rem(30);
+      height: px-to-rem(30);
+      filter: invert(#fff);
     }
   }
 }
