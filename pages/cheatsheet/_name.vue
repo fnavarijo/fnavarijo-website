@@ -27,27 +27,27 @@
 
 <script lang="ts">
 import { Context } from '@nuxt/types';
-import { Result as NuxtContentResult } from '@nuxt/content';
 import { Component, Vue } from 'nuxt-property-decorator';
+
+import { NuxtContentPage } from '@/types/nuxt-content';
 
 @Component
 export default class CheatSheets extends Vue {
-  page: NuxtContentResult | null = null;
+  page: NuxtContentPage | null = null;
 
   async asyncData(
     { $content, params }: Context
-  ): Promise<{ page: NuxtContentResult }> {
+  ): Promise<{ page: NuxtContentPage }> {
     const { name } = params;
-    const page: NuxtContentResult = await $content(`cheatsheet/${name}`).fetch();
+    const page: NuxtContentPage = await $content(`cheatsheet/${name}`).fetch();
 
     return {
       page
     };
   }
 
-  // TODO: update typing
-  get pageTitles (): Array<Object> {
-    return this.page!.toc as Array<Object>;
+  get pageTitles (): Object[] {
+    return this.page!.toc as Object[];
   }
 }
 </script>
