@@ -58,12 +58,51 @@ This elements should be identified by a heading tag. (`<h1/> - <h2/>`).
 ```
 
 ### `<section>`
-This element wrap content that are related to the main idea of the document. 
+This element represents a generic section of a document or application. We can see it as a thematic grouping of content.
+* Should be identified by a heading (`<h1 /> - <h6 />`) as child.
+* It's not a generic container element. For styling or scripting purposes use `<div>` instead.
+
+``` markup
+<article>
+  <h1>A basketball game</h1>
+
+  <section>
+    <h2>The team</h2>
+    <p>The team is comformed by 12 players</p>
+  </section>
+
+  <section>
+    <h2>The score</h2>
+    <p>There are three points shots, 2 points and 1 point from line.</p>
+  </section>
+</article>
+```
 
 ### `<header>`
 
 ### `<aside>`
 
 ### `<nav>`
+This elements represents a section of a page that links to other pages or parts within the page.
+* When the content represents a list of items, use list markup.
+* In a document, can exist more than one `<nav />` element. Usually only one is needed.
+* Not only a list of items can be in `<nav />`. It can contain a paragraph with links.
+
+``` markup
+<nav>
+  <li>
+    <ul><a href="#home">Home</ul>
+    <ul><a href="#about">About Us</ul>
+    <ul><a href="#contact">Contact</ul>
+  </li>
+</nav>
+```
+
+``` markup
+<nav>
+  This is a little story about <a href="/aboutme">me</a>.
+  When I was 5 years old, I was playing <a href="/basketball">basketball</a>
+</nav>
+```
 
 ### `<footer>`
