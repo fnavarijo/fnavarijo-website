@@ -19,10 +19,10 @@
     <footer class="home-banner__footer">
       <div class="is-flex footer__icons-container">
         <a href="https://twitter.com/fnavarijo96" target="_blank">
-          <img class="footer__icon" src="~/assets/img/twitter.svg" />
+          <img class="footer__icon" src="~/assets/img/twitter.svg" alt="Link to my twitter account" />
         </a>
         <a href="https://www.linkedin.com/in/fnavarijo/" target="_blank">
-          <img class="footer__icon" src="~/assets/img/linkedin.svg" />
+          <img class="footer__icon" src="~/assets/img/linkedin.svg" alt="Link to my linkedin account" />
         </a>
       </div>
       <div class="footer__icons-author">Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
