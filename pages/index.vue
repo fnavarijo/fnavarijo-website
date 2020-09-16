@@ -16,7 +16,7 @@
       I'm Fernando Navarijo
     </h2>
     <span class="home-banner__job-position">Web Developer & Devops Engineer</span>
-    <footer class="home-banner__footer">
+    <footer class="home-banner__footer is-flex">
       <div class="is-flex footer__icons-container">
         <a href="https://twitter.com/fnavarijo96" target="_blank">
           <img class="footer__icon" src="~/assets/img/twitter.svg" alt="Link to my twitter account" />
@@ -25,7 +25,7 @@
           <img class="footer__icon" src="~/assets/img/linkedin.svg" alt="Link to my linkedin account" />
         </a>
       </div>
-      <div class="footer__icons-author">Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+      <span class="footer__icons-author">Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></span>
     </footer>
   </section>
 </template>
@@ -117,7 +117,10 @@ export default class HomePage extends Vue {
 
   &__footer {
     position: absolute;
-    bottom: px-to-rem(20);
+    top: 80%;
+    bottom: px-to-rem(10);
+    flex-direction: column;
+    justify-content: space-between;
   }
 
   .footer {
@@ -127,6 +130,7 @@ export default class HomePage extends Vue {
 
     &__icons-author {
       font-size: px-to-rem(10);
+      justify-self: flex-end;
     }
 
     &__icon {
