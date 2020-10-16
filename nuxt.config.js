@@ -84,6 +84,6 @@ export default {
     },
   },
   googleAnalytics: {
-    id: 'UA-180705412-1'
-  }
+    id: 'UA-180705412-1',
+  },
 }
