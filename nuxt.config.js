@@ -85,9 +85,5 @@ export default {
   },
   googleAnalytics: {
     id: 'UA-180705412-1',
-    debug: {
-      enabled: true,
-      sendHitTask: true,
-    },
   },
 }
