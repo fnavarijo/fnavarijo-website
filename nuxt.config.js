@@ -55,6 +55,8 @@ export default {
     '@nuxtjs/stylelint-module',
     // Doc: https://github.com/nuxt-community/style-resources-module/
     '@nuxtjs/style-resources',
+    // Doc: https://github.com/nuxt-community/analytics-module#readme
+    '@nuxtjs/google-analytics',
   ],
   /*
   ** Nuxt.js modules
@@ -80,5 +82,8 @@ export default {
         theme: false,
       },
     },
+  },
+  googleAnalytics: {
+    id: 'UA-180705412-1'
   }
 }
